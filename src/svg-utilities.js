@@ -39,6 +39,11 @@ module.exports = {
         if (!!svgBoundingClientRect) {
           width = parseFloat(svgBoundingClientRect.width);
           height = parseFloat(svgBoundingClientRect.height);
+          // hack
+          if (!width && !height) {
+            width = svg.width.animVal.value;
+            height = svg.height.animVal.value;
+          }
         } else {
           throw new Error('Cannot determine SVG width and height.');
         }
